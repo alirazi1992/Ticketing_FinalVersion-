@@ -119,3 +119,34 @@ This makes the codebase **scalable, testable, and easy to maintain**.
 🔲 Deployment & CI/CD pipelines
 
 🔲 Add more languages beyond Farsi/English
+
+---
+
+## 🧭 Backend (C#) Preview
+
+A lightweight **ASP.NET Core Minimal API** backend is included under `backend/src/Ticketing.Api` to serve the dashboards. It ships with an in-memory store, seeded tickets, and role-aware reply/assignment endpoints so you can iterate quickly.
+
+### Prerequisites
+
+- [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+
+### Running locally
+
+```bash
+# Restore dependencies
+dotnet restore backend/src/Ticketing.Api/Ticketing.Api.csproj
+
+# Run the API (listens on http://localhost:5000 by default)
+dotnet run --project backend/src/Ticketing.Api/Ticketing.Api.csproj
+```
+
+### Available endpoints
+
+- `GET /api/tickets` — list all tickets
+- `GET /api/tickets/{id}` — fetch ticket details
+- `POST /api/tickets` — create a ticket
+- `POST /api/tickets/{id}/assign` — assign to a technician
+- `POST /api/tickets/{id}/reply` — add a role-tagged reply
+- `POST /api/tickets/{id}/status` — update workflow status
+
+Swagger UI is enabled by default at `/swagger` for quick exploration and manual testing.
